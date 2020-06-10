@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Hi, {{ current_user.username }}!</h1>
+    <h3 class="total">Your current total is, ${{ current_user.moola }}</h3>
+    <form action="" method="post" novalidate>
+   		{{ form.hidden_tag() }}
+	    <p>
+	    	{{ form.ammountNeeded.label }}
+	    	{{ form.ammountNeeded(size=20) }}
+	    	{{ form.submit() }}
+	    </p>
+
+    </form>
+
+{% endblock %}

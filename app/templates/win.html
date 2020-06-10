@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Hi, {{ current_user.username }}!</h1>
+    <h3>Who won this match?</h3>
+    <form action="" method="post" novalidate>
+    	{{ form.hidden_tag() }}
+
+    <!-- checkboxes for each of the teams -->
+    <div>
+    	<h3 class="total">{{ game.teamA }} won!</h3>
+  		<input type="checkbox" name="teams" value="1">
+  		
+    	
+    </div>
+
+    <p>-----------------------</p>
+
+    <div>
+    	<h3 class="total">{{ game.teamB }} won!</h3>
+    	<input type="checkbox" name="teams" value="2">
+    </div>
+   <p>{{ form.save() }}</p>
+
+
+{% endblock %}

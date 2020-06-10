@@ -1,0 +1,93 @@
+
+/* CSS for the Games Table */
+table {
+	margin: 2em
+}
+
+td {
+	font-size: 16px;
+  	border: 1px solid black collapse;
+  	padding: 1em;
+  	text-align: left;
+  	background-color: #D4B483;
+  	border-radius: 8px;
+
+}
+
+th {
+	font-size: 18px;
+	border: 1px solid black collapse;
+  	padding: 1em;
+  	text-align: center;
+  	background-color: #5995ED;
+  	border-radius: 8px;
+
+}
+
+
+/* CSS for the links so they look like buttons */
+.button {
+  font: bold 11px Arial;
+  text-decoration: none;
+  background-color: #C1666B;
+  color: #CCCCCC;
+  padding: 2px 6px 2px 6px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
+  border-radius: 5px;
+}
+
+
+.button2 {
+  font: bold 11px Arial;
+  text-decoration: none;
+  background-color: #4357AD;
+  color: #CCCCCC;
+  padding: 2px 6px 2px 6px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
+}
+
+/* CSS for the game form */
+.gameForm {
+
+	border-radius: 8px;
+	border-style: solid;
+  	text-align: left;
+  	background-color: #00AAFF;
+  	width: 500px;
+  	padding-left: 1em;
+}	
+
+/* CSS for the "All Games" */
+.allGames {
+	background-color: #D4B483;
+	border-radius: 8px;
+	border-style: solid;
+  	text-align: center;
+}
+
+/* CSS for the home page displaying the user's money */
+.total {
+	background-color: #D4B483;
+	border-radius: 8px;
+	border-style: solid;
+  	text-align: left;
+  	width: 200px; 
+  	padding-left: 1em;
+  	padding-right: 1em;
+}
+
+/* CSS for the search bar */
+.search {
+	text-align: right;
+}
+
+body{
+	background-color: #36BAB5;
+}
+

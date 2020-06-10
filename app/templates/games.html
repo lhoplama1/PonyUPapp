@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+	<!-- establishing a search bar in the top right in case the user wants
+	to search for a specific sport -->
+	<form action="" method="post" novalidate>	
+		{{ search.hidden_tag() }}
+		<div class="search">
+			<p>
+				{{ search.sport.label }}
+				{{ search.sport(size=20) }}
+				{{ search.search() }}
+			</p>
+		</div>
+	</form>
+    <h1>Hi, {{ current_user.username }}!</h1>
+    <h2>Enter a New Game:</h2>
+    <form action="" method="post" novalidate>
+   		{{ form.hidden_tag() }}
+   		<div class="gameForm">
+
+   			<!-- Form for creating a new game -->
+   			<p>
+		    	{{ form.date.label }}
+		    	{{ form.date() }}
+		    </p> 
+		    <p>
+		    	{{ form.sport.label }}
+		    	{{ form.sport(size=35) }}
+		    </p>
+		    <p>
+		    	{{ form.location.label }}
+		    	{{ form.location(size=65) }}
+		    </p>
+		    <p>
+		    	{{ form.watchSpot.label }}
+		    	{{ form.watchSpot(size=40) }}
+		    </p>
+		    <p>
+		    	{{ form.name.label }}
+		    	{{ form.name(size=40) }}
+		    </p>
+		    <p>
+		    	{{ form.teamA.label }}
+		    	{{ form.teamA(size=30) }}
+		    </p>
+		    <p>
+		    	{{ form.teamB.label }}
+		    	{{ form.teamB(size=30) }}
+		    </p>
+		    <h4>Both Required:</h4>
+		    <p>
+		    	{{ form.initalBetA.label }}
+		    	${{ form.initalBetA(size=10) }}
+		    </p>
+		  	<p>
+		    	{{ form.initalBetB.label }}
+		    	${{ form.initalBetB(size=10) }}
+		    	{{ form.submit() }}
+		    </p>
+   			
+   		</div>
+   		
+	    
+
+	</form>
+
+	<!-- Table for displaying all of the games -->
+	<h2 class="allGames">↧↧↧↧ All Games ↧↧↧↧</h2>
+	<table>
+		<tr>
+			<th>End Time</th>
+			<th>Current Bet (Team 1)</th>
+			<th>Current Bet (Team 2)</th>
+	    	<th>Inital Bet (Team 1)</th>
+	    	<th>Inital Bet (Team 2)</th>
+	    	<th>Team 1</th>
+	    	<th>Team 2</th>
+	    	<th>Sport</th>
+	    	<th>Location</th>
+	    	<th>Where to Watch</th>
+	    	<th>Name of Event</th>
+    	</tr>
+
+	    {% for game in games %}
+	    <tr>
+	    	<td>{{ game.closeDate }}</td>
+	    	<td>${{ game.currentBetA }}</td>
+	    	<td>${{ game.currentBetB }}</td>
+	    	<td>${{ game.openingBetA }}</td>
+	    	<td>${{ game.openingBetB }}</td>
+	    	<td>{{ game.teamA }}</td>
+	    	<td>{{ game.teamB }}</td>
+	    	<td>{{ game.sport }}</td>
+	    	<td>{{ game.location }}</td>
+	    	<td>{{ game.watchSpot }}</td>
+	    	<td>{{ game.eventName }}</td>
+
+	    	<!-- if the date on the game has already happened,
+	    	then display the winning screen rather than the bet screen -->
+	    	{% if now < game.closeDate %} 
+	    		<td><a class="button2" href="{{ url_for('bet', gameId=game.id) }}">Bet</a></td>
+	    	{% else %}
+	    		<td><a class="button2" href="{{ url_for('win', gameId=game.id) }}">Winner</a></td>
+	    	{% endif %}
+	    	
+	    </tr>
+	    {% endfor %}
+	</table>
+
+{% endblock %}

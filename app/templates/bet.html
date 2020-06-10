@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Hi, {{ current_user.username }}!</h1>
+    <h2>Enter your bet:</h2>
+    <form action="" method="post" novalidate>
+    	{{ form.hidden_tag() }}
+
+    	<!-- Displaying both of the teams so the user doesn't
+    	have to remember the team's name they want to bet on -->
+    	<table>
+    		<tr>
+    			<th>Team 1</th>
+    			<th>Team 2</th>
+    		</tr>
+
+    		<tr>
+    			<td>{{ game.teamA }}</td>
+    			<td>{{ game.teamB }}</td>
+    		</tr>
+    	</table>
+
+    	<!-- Displaying the form for them to bet on the team they want to win -->
+		<p>
+			{{ form.ammountBetting.label }}
+			${{ form.ammountBetting(size=10) }}
+		</p>
+		<p>
+			{{ form.teamBetting.label }}
+			{{ form.teamBetting(size=30) }}
+			{{ form.submit() }}
+		</p>		
+
+	</form>
+
+{% endblock %}
